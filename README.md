@@ -35,3 +35,6 @@ Encounter an issue or have questions? Please open an issue on this GitHub reposi
 ## License
 
 MOOB is released under the GNU General Public License v2.0. For more details, see the [LICENSE](LICENSE) file included in this repository.
+
+# Credits
+Thank you Dimentox and Captain-Of-Coit for contributions to the Terrain heightmap system and project build system respectively.
