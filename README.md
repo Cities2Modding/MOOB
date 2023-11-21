@@ -20,6 +20,11 @@ MOOB is a "polyfill" type mod designed to enhance the usability of the Map Edito
 2. Place the MOOB plugin file into the `BepInEx/plugins` folder in your Cities Skylines 2 game directory.
 3. Launch the game, and MOOB will be active.
 
+## Features
+1. **Import .PNG, .TIFF or .RAW images:** 16-bit RAW is preferred but if you need to you can use PNG or TIFF formats.
+2. **Automatically resize Cities Skylines 1 Heightmaps**: If you import an 1081x1081 heightmap it will resize to an approximate 1:1ish scale to Cities Skylines 1.
+3. **8-bit to 16-bit channel conversion**: If you import an 8-bit image it will convert it for you. It will run 10 passes of blurring to try to prevent terracing. (This is WIP and results may not be the best.)
+
 ## Usage
 
 Once installed, MOOB will automatically enhance the Map Editor's functionality. Open Cities Skylines 2 and access the Map Editor to experience the improvements.

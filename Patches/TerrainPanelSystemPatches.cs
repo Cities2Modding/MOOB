@@ -57,14 +57,13 @@ namespace MOOB.Patches
     {
         static bool Prefix( ref TerrainPanelSystem __instance )
         {
-            var file = OpenFileDialog.ShowDialog( "Raw files\0*.raw\0", ".raw" );
+            var file = OpenFileDialog.ShowDialog( "Image files\0*.raw;*.png;*.tiff\0", ".raw" );
 
             if ( !string.IsNullOrEmpty( file ) )
             {
                 var terrainSystem = __instance.World.GetExistingSystemManaged<TerrainSystem>( );
 
-                if ( Texture2DExtensions.Load16BitRaw( file, 4096, 4096, out var heightmap ) )
-                    terrainSystem.ApplyHeightMap( heightmap );
+                Texture2DExtensions.LoadHeightMap( file, terrainSystem.ApplyHeightMap );
             }
             return false; // Skip original method
         }
@@ -77,7 +76,7 @@ namespace MOOB.Patches
         {
             TerrainPanelSystem_OnSaveHeightmapPatch._closeSubPanel.Invoke( __instance, null );
 
-            // We do nothing here as we do our own image open with no display
+            // We do nothing here as we use our own image open with no display
 
             return false; // Skip original method
         }

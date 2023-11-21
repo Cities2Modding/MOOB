@@ -1,0 +1,38 @@
+#pragma kernel CSMain
+
+Texture2D<float> InputTexture; // Assuming R16 input
+RWTexture2D<float> OutputTexture; // R16 output
+float Intensity; // Interpolation factor
+
+static const float weights[9] = { 1, 2, 1, 2, 4, 2, 1, 2, 1 };
+
+[numthreads(8, 8, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    uint width, height;
+    InputTexture.GetDimensions(width, height);
+    
+    float originalValue = InputTexture[id.xy].r;
+
+    // Apply Gaussian blur on the 16-bit value
+    float blurredValue = 0.0f;
+    float weightSum = 16.0f;
+
+    for (int y = -1; y <= 1; y++)
+    {
+        for (int x = -1; x <= 1; x++)
+        {
+            int2 readPos = int2(id.xy) + int2(x, y);
+            readPos = clamp(readPos, 0, int2(width - 1, height - 1));
+            blurredValue += InputTexture[readPos].r * weights[(y + 1) * 3 + (x + 1)];
+        }
+    }
+
+    blurredValue /= weightSum;
+
+    // Interpolate between original and blurred value
+    float resultValue = lerp(originalValue, blurredValue, Intensity);
+
+    // Write the result to the output texture
+    OutputTexture[id.xy] = resultValue;
+}

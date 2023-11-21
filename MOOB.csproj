@@ -26,6 +26,14 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
+	  <None Remove="Unity\modblur" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <EmbeddedResource Include="Unity\modblur" />
+	</ItemGroup>
+	
+	<ItemGroup>
 		<Reference Include="Colossal.AssetPipeline">
 			<HintPath>$(Cities2_Location)\Cities2_Data\Managed\Colossal.AssetPipeline.dll</HintPath>
 			<Private>False</Private>
@@ -152,6 +160,10 @@
 		</Reference>
 		<Reference Include="Cinemachine">
 			<HintPath>$(Cities2_Location)\Cities2_Data\Managed\Cinemachine.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>$(Cities2_Location)\Cities2_Data\Managed\Newtonsoft.Json.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="UnityEngine">
@@ -431,7 +443,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(BepInExVersion)' == '5'">
-		<PackageReference Include="BepInEx.Core" Version="5.*" IncludeAssets="compile"/>
+		<PackageReference Include="BepInEx.Core" Version="5.*" IncludeAssets="compile" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(BepInExVersion)' == '6'">
