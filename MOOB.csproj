@@ -26,14 +26,6 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-	  <None Remove="Unity\modblur" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <EmbeddedResource Include="Unity\modblur" />
-	</ItemGroup>
-	
-	<ItemGroup>
 		<Reference Include="Colossal.AssetPipeline">
 			<HintPath>$(Cities2_Location)\Cities2_Data\Managed\Colossal.AssetPipeline.dll</HintPath>
 			<Private>False</Private>
